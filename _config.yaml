@@ -1,18 +1,30 @@
-domain: yourdomain.com
-title: 你的名字
-title_ext: slogan
+domain: Q.TD
+title: Young
+title_ext: King
 
 contacts:
   - icon: "fa fa-envelope"
-    url: "hi@example.com"
-    text: hi@example.com
+    url: "8327811@qq.com"
+    text: 8327811@qq.com
   - icon: "fa fa-qq"
-    text: 10000
+    text: 18677798881
   # - icon: "fa fa-wechat"
   #   text: wechat-username
 
 domains:
-  - domain: 5.nu
+  - domain: 4.KE
     description: "@Give me five✋"
-  - domain: BigToysCompany.com
-    description: "@大玩具"
+  - domain: 9.SRL
+    description: "@Give me five✋"
+  - domain: Q.TD
+    description: "@Give me five✋"
+  - domain: DT.TD
+    description: "@Give me five✋"
+  - domain: GPT.TD
+    description: "@Give me five✋"
+  - domain: WPS.AO
+    description: "@Give me five✋"
+  - domain: VPN.AO
+    description: "@Give me five✋"
+  - domain: NB.AL
+    description: "@Give me five✋"
