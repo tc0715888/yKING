@@ -26,5 +26,7 @@ domains:
     description: "@Give me five✋"
   - domain: VPN.AO
     description: "@Give me five✋"
+  - domain: GPT.AO
+    description: "@Give me five✋"
   - domain: NB.AL
     description: "@Give me five✋"
