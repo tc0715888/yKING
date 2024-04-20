@@ -1,95 +1,55 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Domain Expiration Dates</title>
-    <link rel="stylesheet" href="css/style.css?220506">
-    <link rel="stylesheet" href="css/font-awesome.min.css">
-    <link rel="apple-touch-icon" sizes="180x180" href="img/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="img/favicon-16x16.png">
+    <title>Domain Expiration Tracker</title>
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-<script>
-    // 防止未输入密码即访问页面内容
-    art();
-    function art() {
-        var password = "";
-        var enteredPassword = "";
-        while (enteredPassword != "123458") { // 更改为您自己的密码！
-            password = prompt("输入正确密码才能登陆!");
-            if (password == "123458") {
-                enteredPassword = password;
-                alert("输入成功！");
-                break; // 成功输入密码，退出循环
-            } else if (password != "") {
-                if (password == null) {
-                    window.history.back();
-                } else {
-                    alert("密码错误！");
-                }
-            }
-        }
-    }
-</script>
-
-<h3 class="page-head">
-    <a href="/" class="logo">
-        <img src="img/logo.png" alt="Site Title Logo" width="128">
-        <p>Site Title</p>
-    </a>
-</h3>
-<p style="text-align: center;">联系方式：<a href="#">Contact Link</a></p>
-
-<ul id="followers-list">
-    <!-- 这里将通过JavaScript动态填充域名和剩余时间 -->
+<h1>Domain Expiration Dates</h1>
+<ul id="domain-list">
+    <!-- 域名列表将在这里动态生成 -->
 </ul>
 
 <script>
-    document.addEventListener('DOMContentLoaded', function () {
-        const domains = [
-            { domain: "AGI.AO", registration_date: "2024-04-17" },
-            { domain: "SOS.AO", registration_date: "2024-04-16" },
-            { domain: "SOSO.AO", registration_date: "2024-04-16" },
-            { domain: "UFO.AO", registration_date: "2024-04-17" },
-            { domain: "VPN.AO", registration_date: "2024-04-15" },
-            { domain: "WPS.AO", registration_date: "2024-04-15" },
-            { domain: "ISO.AO", registration_date: "2024-04-17" },
-            { domain: "4.KE", registration_date: "2024-02-15" },
-            { domain: "98.KE", registration_date: "2024-04-18" },
-            { domain: "AGI.KE", registration_date: "2024-04-18" },
-            { domain: "GPT.KE", registration_date: "2024-04-16" },
-            { domain: "KB.KE", registration_date: "2024-04-17" },
-            { domain: "KD.KE", registration_date: "2024-04-17" },
-            { domain: "KEE.KE", registration_date: "2024-04-17" },
-            { domain: "KEY.KE", registration_date: "2024-04-16" },
-            { domain: "KKK.KE", registration_date: "2024-04-16" },
-            { domain: "Q.TD", registration_date: "2022-09-03" },
-            { domain: "GPT.TD", registration_date: "2023-04-10" },
-            { domain: "DT.TD", registration_date: "2022-07-03" },
-            { domain: "9.SRL", registration_date: "2022-04-21" },
-            { domain: "NB.AL", registration_date: "2024-04-08" }
-        ];
+document.addEventListener('DOMContentLoaded', function () {
+    const domains = [
+        { domain: "AGI.AO", registrationDate: "2024-04-17" },
+        { domain: "SOS.AO", registrationDate: "2024-04-16" },
+        { domain: "SOSO.AO", registrationDate: "2024-04-16" },
+        { domain: "UFO.AO", registrationDate: "2024-04-17" },
+        { domain: "VPN.AO", registrationDate: "2024-04-15" },
+        { domain: "WPS.AO", registrationDate: "2024-04-15" },
+        { domain: "ISO.AO", registrationDate: "2024-04-17" },
+        { domain: "4.KE", registrationDate: "2024-02-15" },
+        { domain: "98.KE", registrationDate: "2024-04-18" },
+        { domain: "AGI.KE", registrationDate: "2024-04-18" },
+        { domain: "GPT.KE", registrationDate: "2024-04-16" },
+        { domain: "KB.KE", registrationDate: "2024-04-17" },
+        { domain: "KD.KE", registrationDate: "2024-04-17" },
+        { domain: "KEE.KE", registrationDate: "2024-04-17" },
+        { domain: "KEY.KE", registrationDate: "2024-04-16" },
+        { domain: "KKK.KE", registrationDate: "2024-04-16" },
+        { domain: "9.SRL", registrationDate: "2022-04-21" },
+        { domain: "Q.TD", registrationDate: "2022-09-03" },
+        { domain: "DT.TD", registrationDate: "2022-07-03" },
+        { domain: "GPT.TD", registrationDate: "2023-04-10" },
+        { domain: "NB.AL", registrationDate: "2024-04-08" }
+    ];
 
-        domains.forEach(function (domain) {
-            const registrationDate = new Date(domain.registration_date);
-            const currentDate = new Date();
-            const timeDiff = registrationDate - currentDate;
-            const daysRemaining = Math.floor(timeDiff / (1000 * 3600 * 24));
+    const listContainer = document.getElementById('domain-list');
+    domains.forEach(domain => {
+        const today = new Date();
+        const registrationDate = new Date(domain.registrationDate);
+        const timeDiff = registrationDate.getTime() - today.getTime();
+        const daysLeft = Math.ceil(timeDiff / (1000 * 3600 * 24));
 
-            const domainElement = document.createElement("li");
-            domainElement.textContent = `${domain.domain} expires in ${daysRemaining} days`;
-            document.getElementById("followers-list").appendChild(domainElement);
-        });
+        const listItem = document.createElement('li');
+        listItem.textContent = `${domain.domain} expires in ${daysLeft > 0 ? daysLeft : 'Expired'} days`;
+        listContainer.appendChild(listItem);
     });
+});
 </script>
-
-<footer class="bg-gray-200 flex items-center px-10 py-5 flex justify-between flex-col lg:flex-row mt-16">
-    <div class="text-gray-500 text-sm text-center lg:text-left">
-        Copyright © 2024 Your Website Name. All rights reserved.
-        <a class="text-gray-500" href="https://github.com/yourprofile/yourproject">Your GitHub Link</a>
-    </div>
-</footer>
 </body>
 </html>
