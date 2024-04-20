@@ -1,34 +1,5 @@
----
----
 <!doctype html>
 <html>
-
-<script>
-art()
-function art() {
-    var a = ""
-    var b = ""
-    while (b != "123458") { //改为你自己的密码！
-        a = prompt("输入正确密码才能登陆!")
-        if (a == "123458") {
-            b = a
-            alert("输入成功！")
-            return 0
-        }
-        if (a != "123458" && a != "") {
-            if (a == null) {
-                window.history.back();
-                location.reload(); //强制刷新
-
-                window.location.go(-1); //强制跳转上一界面
-            } else {
-                alert("密码错误！")
-            }
-        }
-    }
-
-}
-</script>
 
 <head>
     <meta charset="utf-8">
@@ -40,6 +11,17 @@ function art() {
     <link rel="apple-touch-icon" sizes="180x180" href="img/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="img/favicon-16x16.png">
+    <style>
+        #summary-box {
+            background-color: #f0f0f0;
+            padding: 10px;
+            margin-bottom: 20px;
+        }
+
+        #summary-box h4 {
+            margin: 0;
+        }
+    </style>
 </head>
 
 <body>
@@ -76,12 +58,54 @@ function art() {
         </li>
         {%- endfor -%}
     </ul>
+    <div id="summary-box">
+        <h4>域名后缀汇总</h4>
+        <ul id="suffix-summary">
+            <!-- JavaScript will populate this list -->
+        </ul>
+        <h4>续费总计金额</h4>
+        <p id="renewal-total">
+            <!-- JavaScript will populate this -->
+        </p>
+    </div>
     <footer class="bg-gray-200 flex items-center px-10 py-5 flex justify-between flex-col lg:flex-row mt-16">
         <div class="text-gray-500 text-sm text-center lg:text-left">
             Copyright © 2024 {{ site.domain }}. 长期收单字符. <a class="text-gray-500"
                 href="https://github.com/bigtoyscompany/domain-portfolio">年轻的国王</a>
         </div>
     </footer>
+
+    <script>
+        // Extract domain suffixes from the list and count them
+        var domains = document.querySelectorAll('#followers-list li strong');
+        var suffixes = {};
+        domains.forEach(function (domain) {
+            var suffix = domain.textContent.split('.').pop();
+            if (suffixes[suffix]) {
+                suffixes[suffix]++;
+            } else {
+                suffixes[suffix] = 1;
+            }
+        });
+
+        // Display the summary
+        var suffixSummary = document.getElementById('suffix-summary');
+        for (var suffix in suffixes) {
+            var li = document.createElement('li');
+            li.textContent = suffix + ': ' + suffixes[suffix];
+            suffixSummary.appendChild(li);
+        }
+
+        // Calculate and display the total renewal amount
+        var renewalTotal = document.getElementById('renewal-total');
+        var totalAmount = 0;
+        {%- for domain in site.domains -%}
+        {%- if domain.price -%}
+        totalAmount += parseFloat('{{ domain.price }}');
+        {%- endif -%}
+        {%- endfor -%}
+        renewalTotal.textContent = totalAmount.toFixed(2);
+    </script>
 </body>
 
 </html>
