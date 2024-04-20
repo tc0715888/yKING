@@ -1,75 +1,57 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Young King's Domain Portfolio</title>
+    <title>{{ site.title }} - {{ site.domain }}</title>
+    <link rel="stylesheet" href="css/font-awesome.min.css">
     <link rel="stylesheet" href="css/style.css">
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const domains = document.querySelectorAll('.expires');
+            domains.forEach(function(domain) {
+                const regDate = new Date(domain.getAttribute('data-reg-date'));
+                const expiryDate = new Date(regDate.setFullYear(regDate.getFullYear() + 1));
+                const today = new Date();
+                const remainingDays = Math.round((expiryDate - today) / (1000 * 60 * 60 * 24));
+                domain.textContent = remainingDays > 0 ? remainingDays + ' days left' : 'Expired';
+            });
+        });
+    </script>
 </head>
 <body>
-<script>
-    // 一次性密码保护
-    (function passwordProtection() {
-        const correctPassword = '123458';
-        let userInput = prompt("请输入密码以访问页面:");
-        if (userInput !== correctPassword) {
-            alert("密码错误！");
-            window.history.back();
-        } else {
-            alert("密码正确，欢迎访问！");
-        }
-    })();
-</script>
+    <header>
+        <h3 class="page-head">
+            <a href="/" class="logo">
+                <img src="img/logo.png" alt="{{ site.title }}">
+                <span class="ext">{{ site.title_ext }}</span><span class="dot">·</span><span class="brand">{{ site.domain }}</span>
+            </a>
+        </h3>
+        <p style="text-align: center;">联系方式：
+            <a href="mailto:8327811@qq.com"><i class="fa fa-envelope"></i> 8327811@qq.com</a> ·
+            <i class="fa fa-qq"></i> 18677798881
+        </p>
+    </header>
 
-<h1>域名到期时间跟踪</h1>
-<p>联系方式：<a href="mailto:8327811@qq.com"><i class="fa fa-envelope"></i> 8327811@qq.com</a> | <i class="fa fa-qq"></i> 18677798881</p>
-<ul id="domain-list">
-    <!-- 域名列表将在这里动态生成 -->
-</ul>
+    <main>
+        <ul id="followers-list">
+            {%- for domain in site.domains -%}
+            <li>
+                <a href="#">
+                    <img src="https://eu.ui-avatars.com/api/?background=random&name={{ domain.domain | slice: 0 }}&font-size=0.6">
+                    <strong>{{ domain.domain }}</strong>
+                    <span>{{ domain.description }}</span>
+                    <span class="expires" data-reg-date="{{ domain.registration_date }}">Calculating...</span>
+                </a>
+            </li>
+            {%- endfor -%}
+        </ul>
+    </main>
 
-<script>
-    document.addEventListener('DOMContentLoaded', function () {
-        const domains = [
-            { domain: "AGI.AO", registrationDate: "2024-04-17", description: "@Give me five✋♣angoweb. $22.35♣" },
-            { domain: "SOS.AO", registrationDate: "2024-04-16", description: "@Give me five✋♣angoweb. $22.35♣" },
-            { domain: "SOSO.AO", registrationDate: "2024-04-16", description: "@Give me five✋♣angoweb. $22.35♣" },
-            { domain: "UFO.AO", registrationDate: "2024-04-17", description: "@Give me five✋♣angoweb. $22.35♣" },
-            { domain: "VPN.AO", registrationDate: "2024-04-15", description: "@Give me five✋♣angoweb. $22.35♣" },
-            { domain: "WPS.AO", registrationDate: "2024-04-15", description: "@Give me five✋♣angoweb. $22.35♣" },
-            { domain: "ISO.AO", registrationDate: "2024-04-17", description: "@Give me five✋♣angoweb. $22.35♣" },
-            { domain: "4.KE", registrationDate: "2024-02-15", description: "@Give me five✋♣kenyawebexperts. $22♣" },
-            { domain: "98.KE", registrationDate: "2024-04-18", description: "@Give me five✋♣kenyawebexperts. $22♣" },
-            { domain: "AGI.KE", registrationDate: "2024-04-18", description: "@Give me five✋♣kenyawebexperts. $22♣" },
-            { domain: "GPT.KE", registrationDate: "2024-04-16", description: "@Give me five✋♣kenyawebexperts. $22♣" },
-            { domain: "KB.KE", registrationDate: "2024-04-17", description: "@Give me five✋♣kenyawebexperts. $22♣" },
-            { domain: "KD.KE", registrationDate: "2024-04-17", description: "@Give me five✋♣kenyawebexperts. $22♣" },
-            { domain: "KEE.KE", registrationDate: "2024-04-17", description: "@Give me five✋♣kenyawebexperts. $22♣" },
-            { domain: "KEY.KE", registrationDate: "2024-04-16", description: "@Give me five✋♣kenyawebexperts. $22♣" },
-            { domain: "KKK.KE", registrationDate: "2024-04-16", description: "@Give me five✋♣kenyawebexperts. $22♣" },
-            { domain: "9.SRL", registrationDate: "2022-04-21", description: "@Give me five✋♣porkbun. $28.89♣" },
-            { domain: "Q.TD", registrationDate: "2022-09-03", description: "@Give me five✋♣afriregister. 22.26€♣" },
-            { domain: "DT.TD", registrationDate: "2022-07-03", description: "@Give me five✋♣afriregister. 22.26€♣" },
-            { domain: "GPT.TD", registrationDate: "2023-04-10", description: "@Give me five✋♣afriregister. 22.26€♣" },
-            { domain: "NB.AL", registrationDate: "2024-04-08", description: "@Give me five✋♣innovahost. 10.99€♣" }
-        ];
-
-        const listContainer = document.getElementById('domain-list');
-        domains.forEach(domain => {
-            const today = new Date();
-            const registrationDate = new Date(domain.registrationDate);
-            const timeDiff = registrationDate - today;
-            const daysLeft = Math.ceil(timeDiff / (1000 * 3600 * 24));
-
-            const listItem = document.createElement('li');
-            listItem.textContent = `${domain.domain} 还剩 ${daysLeft} 天到期 - ${domain.description}`;
-            listContainer.appendChild(listItem);
-        });
-    });
-</script>
-
-<footer>
-    <p>&copy; 2024 Young King. All rights reserved.</p>
-    <p><a href="https://github.com/yourprofile/yourproject">GitHub</a></p>
-</footer>
+    <footer class="footer bg-gray-200 flex items-center px-10 py-5 justify-between flex-col lg:flex-row">
+        <div class="text-gray-500 text-sm text-center lg:text-left">
+            © {{ "now" | date: "%Y" }} {{ site.domain }}. All rights reserved.
+        </div>
+    </footer>
 </body>
 </html>
