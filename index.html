@@ -12,14 +12,26 @@
     <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="img/favicon-16x16.png">
     <style>
+        /* 样式 */
         #summary-box {
             background-color: #f0f0f0;
+            border: 1px solid #ccc;
             padding: 10px;
             margin-bottom: 20px;
         }
 
         #summary-box h4 {
             margin: 0;
+            font-size: 18px;
+        }
+
+        #summary-box ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        #summary-box li {
+            margin-bottom: 5px;
         }
     </style>
 </head>
@@ -61,11 +73,11 @@
     <div id="summary-box">
         <h4>域名后缀汇总</h4>
         <ul id="suffix-summary">
-            <!-- JavaScript will populate this list -->
+            <!-- JavaScript 将动态添加内容到这里 -->
         </ul>
         <h4>续费总计金额</h4>
         <p id="renewal-total">
-            <!-- JavaScript will populate this -->
+            <!-- JavaScript 将动态添加内容到这里 -->
         </p>
     </div>
     <footer class="bg-gray-200 flex items-center px-10 py-5 flex justify-between flex-col lg:flex-row mt-16">
@@ -76,7 +88,7 @@
     </footer>
 
     <script>
-        // Extract domain suffixes from the list and count them
+        // 提取域名后缀并统计数量
         var domains = document.querySelectorAll('#followers-list li strong');
         var suffixes = {};
         domains.forEach(function (domain) {
@@ -88,7 +100,7 @@
             }
         });
 
-        // Display the summary
+        // 显示后缀汇总
         var suffixSummary = document.getElementById('suffix-summary');
         for (var suffix in suffixes) {
             var li = document.createElement('li');
@@ -96,7 +108,7 @@
             suffixSummary.appendChild(li);
         }
 
-        // Calculate and display the total renewal amount
+        // 计算并显示续费总计金额
         var renewalTotal = document.getElementById('renewal-total');
         var totalAmount = 0;
         {%- for domain in site.domains -%}
