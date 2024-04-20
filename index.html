@@ -28,38 +28,7 @@ function art() {
     }
 
 }
-</script>
-        <script>
-        // 提取域名后缀并统计数量
-        var domains = document.querySelectorAll('#followers-list li strong');
-        var suffixes = {};
-        domains.forEach(function (domain) {
-            var suffix = domain.textContent.split('.').pop();
-            if (suffixes[suffix]) {
-                suffixes[suffix]++;
-            } else {
-                suffixes[suffix] = 1;
-            }
-        });
 
-        // 显示后缀汇总
-        var suffixSummary = document.getElementById('suffix-summary');
-        for (var suffix in suffixes) {
-            var li = document.createElement('li');
-            li.textContent = suffix + ': ' + suffixes[suffix];
-            suffixSummary.appendChild(li);
-        }
-
-        // 计算并显示续费总计金额
-        var renewalTotal = document.getElementById('renewal-total');
-        var totalAmount = 0;
-        {%- for domain in site.domains -%}
-        {%- if domain.price -%}
-        totalAmount += parseFloat('{{ domain.price }}');
-        {%- endif -%}
-        {%- endfor -%}
-        renewalTotal.textContent = totalAmount.toFixed(2);
-    </script>
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
