@@ -5,11 +5,38 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Domain Expiration Tracker</title>
-    <link rel="stylesheet" href="css/style.css?220506">
-    <link rel="stylesheet" href="css/font-awesome.min.css">
-    <link rel="apple-touch-icon" sizes="180x180" href="img/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="img/favicon-16x16.png">
+    <style>
+        /* 插入FontAwesome的CSS内容 */
+        @font-face {
+           font-family: 'FontAwesome';
+           /* FontAwesome字体路径设置 */
+        }
+        .fa {
+           /* FontAwesome样式 */
+        }
+        /* 更多FontAwesome的样式设置... */
+        
+        /* 插入第二个CSS内容 */
+        body, form, h1,h2,h3,h4,h5,ol,p,ul {
+            margin: 0;
+            color: #fff;
+            padding: .2em 0.5em;
+        }
+        /* 更多的样式设置... */
+        
+        /* 背景和颜色设置 */
+        body {
+            background: #557fcc; /* 页面主背景颜色 */
+            font-family: "Quicksand", Verdana, Tahoma;
+        }
+        
+        /* 区块和文本样式 */
+        h3 a, li a {
+            color: #fff; /* 链接文本颜色 */
+        }
+        /* 更多的样式设置... */
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400;1,700&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <h3 class="page-head">
@@ -19,16 +46,17 @@
     </h3>
     <p style="text-align: center;">联系方式：</p>
     <ul id="domains-list">
-        <!-- The domain items will be inserted here by JavaScript -->
+        <!-- 域名列表将通过JavaScript填充到这里 -->
     </ul>
     <script>
+        // 密码保护功能
         function passwordProtection() {
             var userPassword = prompt("输入正确密码才能登录!");
             while(userPassword !== "123458") {
                 if(userPassword === null) {
                     window.history.back();
                     location.reload();
-                    return; // Exit the function
+                    return; // 退出函数
                 }
                 userPassword = prompt("密码错误！请再次输入正确密码:");
             }
@@ -36,32 +64,10 @@
         }
         window.onload = passwordProtection;
     </script>
-    <!-- Password protection script ends here -->
+    <!-- 密码保护脚本结束 -->
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            var domains = [
-                // 填充域名数据
-                { domain: '4.KE',  description: '@Give me five✋♣kenyawebexperts.',  price: '$22' },
-                { domain: '98.KE', description: '@Give me five✋♣kenyawebexperts.',  price: '$22' },
-                // ...添加所有其他域名信息
-            ];
-
-            // 计算并添加域名到列表中的函数
-            function updateDomainList() {
-                var listElement = document.getElementById('domains-list');
-                
-                domains.forEach(function(domainObj) {
-                    var listItem = document.createElement('li');
-                    listItem.innerHTML = '<strong>' + domainObj.domain + '</strong>: ' +
-                                         domainObj.description + domainObj.price;
-                    listElement.appendChild(listItem);
-                });
-            }
-
-            updateDomainList();
-        });
-    </script>
-                // 继续填充域名数据
+        document.addEventListener('DOMContentLoaded', function() {
+            var domains =        [         
                 { domain: 'KKK.KE', description: '@Give me five✋♣kenyawebexperts.',  price: '$22' },
                 { domain: 'KEE.KE', description: '@Give me five✋♣kenyawebexperts.',  price: '$22' },
                 { domain: 'KB.KE',  description: '@Give me five✋♣kenyawebexperts.',  price: '$22' },
@@ -83,9 +89,17 @@
                 { domain: 'NB.AL',  description: '@Give me five✋♣innovahost.',       price: '10.99€' },
             ];
 
-            updateDomainList();
+            var listElement = document.getElementById('domains-list');
+            domains.forEach(function(domain) {
+                var listItem = document.createElement('li');
+                var domainText = domain.domain + ' - ' + domain.description + ' ' + domain.price;
+                var listItemContent = document.createTextNode(domainText);
+                listItem.appendChild(listItemContent);
+                listElement.appendChild(listItem);
+            });
         });
     </script>
+    <!-- 页面底部和版权信息 -->
     <footer class="bg-gray-200 flex items-center px-10 py-5 flex justify-between flex-col lg:flex-row mt-16">
         <div class="text-gray-500 text-sm text-center lg:text-left">
             Copyright © 2024 Domain Expiration Tracker. All rights reserved.
