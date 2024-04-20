@@ -1,5 +1,5 @@
 <!doctype html>
-<html>
+<html lang="en">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -22,77 +22,74 @@
         <!-- The domain items will be inserted here by JavaScript -->
     </ul>
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            var domains = [
-                // 填充域名数据
-                { domain: 'AGI.AO', description: '@Give me five✋♣kenyawebexperts. $22♣', registrationDate: '2024-04-17' },
-                { domain: 'SOS.AO', description: '@Give me five✋♣kenyawebexperts. $22♣', registrationDate: '2024-04-16' },
-                { domain: 'SOSO.AO', description: '@Give me five✋♣kenyawebexperts. $22♣', registrationDate: '2024-04-16' },
-                { domain: 'UFO.AO', description: '@Give me five✋♣kenyawebexperts. $22♣', registrationDate: '2024-04-17' },
-                { domain: 'VPN.AO', description: '@Give me five✋♣kenyawebexperts. $22♣', registrationDate: '2024-04-15' },
-                // 继续填充域名数据
-                { domain: 'WPS.AO', description: '@Give me five✋♣kenyawebexperts. $22♣', registrationDate: '2024-04-15' },
-                { domain: 'ISO.AO', description: '@Give me five✋♣kenyawebexperts. $22♣', registrationDate: '2024-04-17' },
-                { domain: '4.KE', description: '@Give me five✋♣kenyawebexperts. $22♣', registrationDate: '2024-02-15' },
-                { domain: '98.KE', description: '@Give me five✋♣kenyawebexperts. $22♣', registrationDate: '2024-04-18' },
-                { domain: 'AGI.KE', description: '@Give me five✋♣kenyawebexperts. $22♣', registrationDate: '2024-04-18' },
-                { domain: 'GPT.KE', description: '@Give me five✋♣kenyawebexperts. $22♣', registrationDate: '2024-04-16' },
-                { domain: 'KB.KE', description: '@Give me five✋♣kenyawebexperts. $22♣', registrationDate: '2024-04-17' },
-                { domain: 'KD.KE', description: '@Give me five✋♣kenyawebexperts. $22♣', registrationDate: '2024-04-17' },
-                { domain: 'KEE.KE', description: '@Give me five✋♣kenyawebexperts. $22♣', registrationDate: '2024-04-17' },
-                { domain: 'KEY.KE', description: '@Give me five✋♣kenyawebexperts. $22♣', registrationDate: '2024-04-16' },
-                { domain: 'KKK.KE', description: '@Give me five✋♣kenyawebexperts. $22♣', registrationDate: '2024-04-16' },
-                { domain: 'Q.TD', description: '@Give me five✋♣afriregister. $22♣', registrationDate: '2022-09-03' },
-                { domain: 'GPT.TD', description: '@Give me five✋♣afriregister. $22♣', registrationDate: '2023-04-10' },
-                { domain: 'DT.TD', description: '@Give me five✋♣afriregister. $22♣', registrationDate: '2022-07-03' },
-                { domain: '9.SRL', description: '@Give me five✋♣webhost. $22♣', registrationDate: '2022-04-21' },
-                { domain: 'NB.AL', description: '@Give me five✋♣webhost. $22♣', registrationDate: '2024-04-08' },
-            ];
-            var listElement = document.getElementById('domains-list');
-
-            domains.forEach(function(domain) {
-                var currentDate = new Date();
-                var registrationDate = new Date(domain.registrationDate);
-                // 设置年份为当前年或次年
-                registrationDate.setFullYear(currentDate.getMonth() > registrationDate.getMonth() ||
-                   (currentDate.getMonth() === registrationDate.getMonth() &&
-                   currentDate.getDate() > registrationDate.getDate()) ?
-                   currentDate.getFullYear() + 1 : currentDate.getFullYear());
-
-                var timeDiff = registrationDate.getTime() - currentDate.getTime();
-                var daysRemaining = Math.ceil(timeDiff / (1000 * 3600 * 24));
-
-                var listItem = document.createElement('li');
-                listItem.innerHTML = '<strong>' + domain.domain + '</strong>: ' + domain.description + ' - 剩余时间: ' + daysRemaining + '天';
-                listElement.appendChild(listItem);
-            });
-        });
-    </script>
-    <!-- 页面的底部和版权信息 -->
-    <footer class="bg-gray-200 flex items-center px-10 py-5 flex justify-between flex-col lg:flex-row mt-16">
-        <div class="text-gray-500 text-sm text-center lg:text-left">
-            Copyright © 2024 Domain Expiration Tracker. All rights reserved.
-        </div>
-    </footer>
-    <script>
-        // 密码保护功能的实现
         function passwordProtection() {
-            var correctPassword = "123458"; // 更改为您的密码
             var userPassword = prompt("输入正确密码才能登录!");
-            while (userPassword !== correctPassword) {
-                if (userPassword === null) {
-                    // 用户点击取消，回到上一页或重新载入页面
+            while(userPassword !== "123458") {
+                if(userPassword === null) {
                     window.history.back();
-                    window.location.reload();
-                    return; // 退出函数
+                    location.reload();
+                    return; // Exit the function
                 }
                 userPassword = prompt("密码错误！请再次输入正确密码:");
             }
             alert("输入成功！");
         }
-
-        // 页面加载完成后调用密码保护函数
         window.onload = passwordProtection;
     </script>
+    <!-- Password protection script ends here -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var domains = [
+                // 填充域名数据
+                { domain: '4.KE',  description: '@Give me five✋♣kenyawebexperts.',  price: '$22' },
+                { domain: '98.KE', description: '@Give me five✋♣kenyawebexperts.',  price: '$22' },
+                // ...添加所有其他域名信息
+            ];
+
+            // 计算并添加域名到列表中的函数
+            function updateDomainList() {
+                var listElement = document.getElementById('domains-list');
+                
+                domains.forEach(function(domainObj) {
+                    var listItem = document.createElement('li');
+                    listItem.innerHTML = '<strong>' + domainObj.domain + '</strong>: ' +
+                                         domainObj.description + domainObj.price;
+                    listElement.appendChild(listItem);
+                });
+            }
+
+            updateDomainList();
+        });
+    </script>
+                // 继续填充域名数据
+                { domain: 'KKK.KE', description: '@Give me five✋♣kenyawebexperts.',  price: '$22' },
+                { domain: 'KEE.KE', description: '@Give me five✋♣kenyawebexperts.',  price: '$22' },
+                { domain: 'KB.KE',  description: '@Give me five✋♣kenyawebexperts.',  price: '$22' },
+                { domain: 'KD.KE',  description: '@Give me five✋♣kenyawebexperts.',  price: '$22' },
+                { domain: 'GPT.KE', description: '@Give me five✋♣kenyawebexperts.',  price: '$22' },
+                { domain: 'KEY.KE', description: '@Give me five✋♣kenyawebexperts.',  price: '$22' },
+                { domain: 'AGI.KE', description: '@Give me five✋♣kenyawebexperts.',  price: '$22' },
+                { domain: '9.SRL',  description: '@Give me five✋♣porkbun.',          price: '$28.89' },
+                { domain: 'Q.TD',   description: '@Give me five✋♣afriregister.',     price: '22.26€' },
+                { domain: 'DT.TD',  description: '@Give me five✋♣afriregister.',     price: '22.26€' },
+                { domain: 'GPT.TD', description: '@Give me five✋♣afriregister.',     price: '22.26€' },
+                { domain: 'WPS.AO', description: '@Give me five✋♣angoweb.',         price: '$22.35' },
+                { domain: 'VPN.AO', description: '@Give me five✋♣angoweb.',         price: '$22.35' },
+                { domain: 'SOS.AO', description: '@Give me five✋♣angoweb.',         price: '$22.35' },
+                { domain: 'SOSO.AO',description: '@Give me five✋♣angoweb.',         price: '$22.35' },
+                { domain: 'UFO.AO', description: '@Give me five✋♣angoweb.',         price: '$22.35' },
+                { domain: 'ISO.AO', description: '@Give me five✋♣angoweb.',         price: '$22.35' },
+                { domain: 'AGI.AO', description: '@Give me five✋♣angoweb.',         price: '$22.35' },
+                { domain: 'NB.AL',  description: '@Give me five✋♣innovahost.',       price: '10.99€' },
+            ];
+
+            updateDomainList();
+        });
+    </script>
+    <footer class="bg-gray-200 flex items-center px-10 py-5 flex justify-between flex-col lg:flex-row mt-16">
+        <div class="text-gray-500 text-sm text-center lg:text-left">
+            Copyright © 2024 Domain Expiration Tracker. All rights reserved.
+        </div>
+    </footer>
 </body>
 </html>
