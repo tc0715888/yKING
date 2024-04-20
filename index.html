@@ -1,178 +1,87 @@
-<!DOCTYPE html>
-<html lang="en">
+---
+---
+<!doctype html>
+<html>
+
+<script>  
+ art()
+   function art() {
+   var a =""
+   var b=""
+   while (b != "123458") { //改为你自己的密码！
+     a = prompt("输入正确密码才能登陆!")
+   if(a=="123458")
+   {
+     b=a
+   alert("输入成功！")
+   return 0
+  }
+  if(a !="123458" && a!="")
+ {
+   if(a == null)
+   {
+     window.history.back();
+     location.reload();//强制刷新
+ 
+     window.location.go(-1); //强制跳转上一界面
+   }
+   else{
+   alert("密码错误！")
+   }
+ }
+ }
+ 
+   }
+</script> 
+
+
 <head>
-<meta charset="UTF-8">
-<title>Domain Expiration Dates</title>
-<style>
-  .domain {
-    margin-bottom: 10px;
-  }
-  .expiration-date {
-    color: #555;
-    margin-top: 5px;
-  }
-</style>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{{ site.domain }} - {{ site.title }}</title>
+    <link rel="stylesheet" href="css/style.css?220506">
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <link rel="apple-touch-icon" sizes="180x180" href="img/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="img/favicon-16x16.png">
 </head>
+
 <body>
-
-<!-- 以下是根据提供的域名信息添加的完整HTML结构 -->
-<div class="domain">
-  <p>Domain: AGI.AO</p>
-  <p>Description: @Give me five✋♣kenyawebexperts. $22♣</p>
-  <p class="expiration-date" id="AGI-AO-remaining">Registration Date: 2024-4-17</p>
-</div>
-
-<div class="domain">
-  <p>Domain: SOS.AO</p>
-  <p>Description: @Give me five✋♣kenyawebexperts. $22♣</p>
-  <p class="expiration-date" id="SOS-AO-remaining">Registration Date: 2024-4-16</p>
-</div>
-
-<div class="domain">
-  <p>Domain: SOSO.AO</p>
-  <p>Description: @Give me five✋♣kenyawebexperts. $22♣</p>
-  <p class="expiration-date" id="SOSO-AO-remaining">Registration Date: 2024-4-16</p>
-</div>
-
-<div class="domain">
-  <p>Domain: UFO.AO</p>
-  <p>Description: @Give me five✋♣kenyawebexperts. $22♣</p>
-  <p class="expiration-date" id="UFO-AO-remaining">Registration Date: 2024-4-17</p>
-</div>
-
-<div class="domain">
-  <p>Domain: VPN.AO</p>
-  <p>Description: @Give me five✋♣kenyawebexperts. $22♣</p>
-  <p class="expiration-date" id="VPN-AO-remaining">Registration Date: 2024-4-15</p>
-</div>
-
-<div class="domain">
-  <p>Domain: WPS.AO</p>
-  <p>Description: @Give me five✋♣kenyawebexperts. $22♣</p>
-  <p class="expiration-date" id="WPS-AO-remaining">Registration Date: 2024-4-15</p>
-</div>
-
-<div class="domain">
-  <p>Domain: ISO.AO</p>
-  <p>Description: @Give me five✋♣kenyawebexperts. $22♣</p>
-  <p class="expiration-date" id="ISO-AO-remaining">Registration Date: 2024-4-17</p>
-</div>
-
-<div class="domain">
-  <p>Domain: 4.KE</p>
-  <p>Description: @Give me five✋♣kenyawebexperts. $22♣</p>
-  <p class="expiration-date" id="4-KE-remaining">Registration Date: 2024-2-15</p>
-</div>
-
-<div class="domain">
-  <p>Domain: 98.KE</p>
-  <p>Description: @Give me five✋♣kenyawebexperts. $22♣</p>
-  <p class="expiration-date" id="98-KE-remaining">Registration Date: 2024-4-18</p>
-</div>
-
-<div class="domain">
-  <p>Domain: AGI.KE</p>
-  <p>Description: @Give me five✋♣kenyawebexperts. $22♣</p>
-  <p class="expiration-date" id="AGI-KE-remaining">Registration Date: 2024-4-18</p>
-</div>
-
-<div class="domain">
-  <p>Domain: GPT.KE</p>
-  <p>Description: @Give me five✋♣kenyawebexperts. $22♣</p>
-  <p class="expiration-date" id="GPT-KE-remaining">Registration Date: 2024-4-16</p>
-</div>
-
-<div class="domain">
-  <p>Domain: KB.KE</p>
-  <p>Description: @Give me five✋♣kenyawebexperts. $22♣</p>
-  <p class="expiration-date" id="KB-KE-remaining">Registration Date: 2024-4-17</p>
-</div>
-
-<div class="domain">
-  <p>Domain: KD.KE</p>
-  <p>Description: @Give me five✋♣kenyawebexperts. $22♣</p>
-  <p class="expiration-date" id="KD-KE-remaining">Registration Date: 2024-4-17</p>
-</div>
-
-<div class="domain">
-  <p>Domain: KEE.KE</p>
-  <p>Description: @Give me five✋♣kenyawebexperts. $22♣</p>
-  <p class="expiration-date" id="KEE-KE-remaining">Registration Date: 2024-4-17</p>
-</div>
-
-<div class="domain">
-  <p>Domain: KEY.KE</p>
-  <p>Description: @Give me five✋♣kenyawebexperts. $22♣</p>
-  <p class="expiration-date" id="KEY-KE-remaining">Registration Date: 2024-4-16</p>
-</div>
-
-<div class="domain">
-  <p>Domain: KKK.KE</p>
-  <p>Description: @Give me five✋♣kenyawebexperts. $22♣</p>
-  <p class="expiration-date" id="KKK-KE-remaining">Registration Date: 2024-4-16</p>
-</div>
-
-<div class="domain">
-  <p>Domain: Q.TD</p>
-  <p>Description: @Give me five✋♣afriregister. $22♣</p>
-  <p class="expiration-date" id="Q-TD-remaining">Registration Date: 2022-9-3</p>
-</div>
-
-<div class="domain">
-  <p>Domain: GPT.TD</p>
-  <p>Description: @Give me five✋♣afriregister. $22♣</p>
-  <p class="expiration-date" id="GPT-TD-remaining">Registration Date: 2023-4-10</p>
-</div>
-
-<div class="domain">
-  <p>Domain: DT.TD</p>
-  <p>Description: @Give me five✋♣afriregister. $22♣</p>
-  <p class="expiration-date" id="DT-TD-remaining">Registration Date: 2022-7-3</p>
-</div>
-
-<div class="domain">
-  <p>Domain: 9.SRL</p>
-  <p>Description: @Give me five✋♣webhost. $22♣</p>
-  <p class="expiration-date" id="9-SRL-remaining">Registration Date: 2022-4-21</p>
-</div>
-
-<div class="domain">
-  <p>Domain: NB.AL</p>
-  <p>Description: @Give me five✋♣webhost. $22♣</p>
-  <p class="expiration-date" id="NB-AL-remaining">Registration Date: 2024-4-8</p>
-</div>
-
-
-<!-- 确保将每个域名的[手动填写注册日期]替换为具体的日期，格式为YYYY-MM-DD -->
-
-<script>
-// 计算并更新域名的剩余时间
-function calculateAndDisplayRemainingTime() {
-  var domainElements = document.querySelectorAll('.expiration-date');
-
-  domainElements.forEach(function(element) {
-    var domainId = element.id;
-    var registrationDateText = element.textContent;
-    var registrationDate = registrationDateText.replace('Registration Date: ', '');
-    // 如果注册日期尚未填写，则不进行计算
-    if (registrationDate.includes('[手动填写注册日期]')) {
-      return;
-    }
-    var currentDate = new Date();
-    var regDate = new Date(registrationDate);
-    var timeDiff = regDate.getTime() - currentDate.getTime();
-    var daysRemaining = Math.ceil(timeDiff / (1000 * 3600 * 24));
-
-    var displayText = daysRemaining < 0 ? "Expired" : daysRemaining + " days remaining";
-    element.textContent = "Registration Date: " + registrationDate + " | " + displayText;
-  });
-}
-
-calculateAndDisplayRemainingTime();
-
-// 确保在页面完全加载后再运行此函数
-window.onload = calculateAndDisplayRemainingTime;
-</script>
-
+    <h3 class="page-head">
+        <a href="/" class="logo">
+            <img src="img/logo.png" alt="{{ site.domain }} - {{ site.title }}" width="128">
+            <p><span class="ext">{{ site.title }}</span><span class="dot">·</span><span class="brand">{{
+                    site.title_ext }}</span>
+        </a></p>
+    </h3>
+    <p style="text-align: center;">联系方式：
+        {%- for contact in site.contacts -%}
+        <a href="{%- if contact.url -%}{{ contact.url }}{%- else -%}javascript:void(0){%- endif -%}">
+            <i class="{{ contact.icon }}"></i>
+            {{ contact.text }}</a>
+        {%- if forloop.last != true -%}&nbsp;·&nbsp;{%- endif -%}
+        {%- endfor -%}
+    </p>
+    <ul id="followers-list">
+        {%- for domain in site.domains -%}
+        <li>
+            <a href="javascript:void(0)"><img
+                    src="https://eu.ui-avatars.com/api/?background=random&amp;name={{ domain.domain | slice: 0 }}&amp;font-size=0.6"><strong>{{
+                    domain.domain }}</strong><span>{{domain.description}}{%- if domain.price -%}［{{domain.price}}］{%-
+                    endif
+                    -%}</span>
+            </a>
+        </li>
+        {%- endfor -%}
+    </ul>
+    <footer class="bg-gray-200 flex items-center px-10 py-5 flex justify-between flex-col lg:flex-row mt-16">
+        <div class="text-gray-500 text-sm text-center lg:text-left">
+            Copyright © 2024 {{site.domain}}. 长期收单字符. <a class="text-gray-500"
+                href=" https://github.com/bigtoyscompany/domain-portfolio">年轻的国王</a>
+        </div>
+    </footer>
 </body>
+
 </html>
+
