@@ -21,16 +21,8 @@
 </head>
 <body>
     <header>
-        <h3 class="page-head">
-            <a href="/" class="logo">
-                <img src="img/logo.png" alt="{{ site.title }}">
-                <span class="ext">{{ site.title_ext }}</span><span class="dot">·</span><span class="brand">{{ site.domain }}</span>
-            </a>
-        </h3>
-        <p style="text-align: center;">联系方式：
-            <a href="mailto:8327811@qq.com"><i class="fa fa-envelope"></i> 8327811@qq.com</a> ·
-            <i class="fa fa-qq"></i> 18677798881
-        </p>
+        <h3>{{ site.title }} {{ site.title_ext }}·{{ site.domain }}</h3>
+        <p>联系方式： <a href="mailto:8327811@qq.com">{{ site.contacts[0].text }}</a> · {{ site.contacts[1].text }}</p>
     </header>
 
     <main>
@@ -38,7 +30,6 @@
             {%- for domain in site.domains -%}
             <li>
                 <a href="#">
-                    <img src="https://eu.ui-avatars.com/api/?background=random&name={{ domain.domain | slice: 0 }}&font-size=0.6">
                     <strong>{{ domain.domain }}</strong>
                     <span>{{ domain.description }}</span>
                     <span class="expires" data-reg-date="{{ domain.registration_date }}">Calculating...</span>
@@ -48,10 +39,8 @@
         </ul>
     </main>
 
-    <footer class="footer bg-gray-200 flex items-center px-10 py-5 justify-between flex-col lg:flex-row">
-        <div class="text-gray-500 text-sm text-center lg:text-left">
-            © {{ "now" | date: "%Y" }} {{ site.domain }}. All rights reserved.
-        </div>
+    <footer>
+        <p>© {{ "now" | date: "%Y" }} {{ site.domain }}. All rights reserved.</p>
     </footer>
 </body>
 </html>
