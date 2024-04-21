@@ -1,5 +1,3 @@
----
----
 <!doctype html>
 <html>
 
@@ -28,6 +26,7 @@ function art() {
     }
 
 }
+</script>
 
 <head>
     <meta charset="utf-8">
@@ -71,7 +70,6 @@ function art() {
                     var remaining = Math.ceil((expiryDate - today) / (1000 * 60 * 60 * 24));
                     document.write('<br>剩余 ' + remaining + ' 天');
                 </script>
-                
             </a>
         </li>
         {%- endfor -%}
