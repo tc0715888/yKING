@@ -83,40 +83,51 @@ function art() {
                 href="https://github.com/bigtoyscompany/domain-portfolio">年轻的国王</a>
         </div>
     </footer>
-      <!-- 域名汇总信息 -->
-    <div class="domain-summary">
-        <h3>域名汇总信息</h3>
-        <div id="domain-summary-content">
-            {%- assign total_amount = 0 -%}
-            {%- for domain in site.domains -%}
-                {%- assign total_amount = total_amount | plus: domain.price -%}
-            {%- endfor -%}
+         <!-- 域名汇总信息 -->
+    <ul id="followers-list" class="domain-summary">
+        {%- assign total_amount = 0 -%}
+        {%- for domain in site.domains -%}
+            {%- assign total_amount = total_amount | plus: domain.price -%}
+        {%- endfor -%}
 
-            {%- assign domain_extensions = '' -%}
-            {%- for domain in site.domains -%}
-                {%- assign extension = domain.domain | split: '.' | last -%}
-                {%- unless domain_extensions contains extension -%}
-                    {%- assign domain_extensions = domain_extensions | append: extension | append: ',' -%}
-                {%- endunless -%}
-            {%- endfor -%}
+        {%- assign domain_extensions = '' -%}
+        {%- for domain in site.domains -%}
+            {%- assign extension = domain.domain | split: '.' | last -%}
+            {%- unless domain_extensions contains extension -%}
+                {%- assign domain_extensions = domain_extensions | append: extension | append: ',' -%}
+            {%- endunless -%}
+        {%- endfor -%}
 
-            {%- assign extensions_array = domain_extensions | split: ',' | sort_natural -%}
-            {%- for extension in extensions_array -%}
-                {%- if extension != '' -%}
-                    {%- assign count = 0 -%}
-                    {%- assign extension_total = 0 -%}
-                    {%- for domain in site.domains -%}
-                        {%- if domain.domain contains extension -%}
-                            {%- assign count = count | plus: 1 -%}
-                            {%- assign extension_total = extension_total | plus: domain.price -%}
-                        {%- endif -%}
-                    {%- endfor -%}
-                    <p>{{ extension | upcase }} 域名数量: {{ count }} 个, 总金额: {{ extension_total }} 元</p>
-                {%- endif -%}
-            {%- endfor -%}
-            <p>年续费总金额: <strong>{{ total_amount }}</strong> 欧/美元</p>
-        </div>
-    </div>
+        {%- assign extensions_array = domain_extensions | split: ',' | sort_natural -%}
+        {%- for extension in extensions_array -%}
+            {%- if extension != '' -%}
+                {%- assign count = 0 -%}
+                {%- assign extension_total = 0 -%}
+                {%- for domain in site.domains -%}
+                    {%- if domain.domain contains extension -%}
+                        {%- assign count = count | plus: 1 -%}
+                        {%- assign extension_total = extension_total | plus: domain.price -%}
+                    {%- endif -%}
+                {%- endfor -%}
+                <li>
+                    <a href="javascript:void(0)">
+                        <!-- 使用随机背景颜色的 Avatar 作为图标 -->
+                        <img src="https://eu.ui-avatars.com/api/?background=random&amp;name={{ extension | slice: 0 }}&amp;font-size=0.6">
+                        <strong>{{ extension | upcase }}</strong>
+                        <span>域名数量: {{ count }} 个, 总金额: {{ extension_total }} 欧/美元</span>
+                    </a>
+                </li>
+            {%- endif -%}
+        {%- endfor -%}
+        <li>
+            <a href="javascript:void(0)">
+                <strong>总金额</strong>
+                <span>{{ total_amount }} 欧/美元</span>
+            </a>
+        </li>
+    </ul>
+
+
 </body>
 
 </html>
