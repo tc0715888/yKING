@@ -1,9 +1,6 @@
----
----
 <!doctype html>
 <html>
 <script>
-art()
 function art() {
     var a = ""
     var b = ""
@@ -41,12 +38,11 @@ function art() {
     <link rel="icon" type="image/png" sizes="16x16" href="img/favicon-16x16.png">
 </head>
 
-<body>
+<body onload="countDomainsAndFees()">
     <h3 class="page-head">
         <a href="/" class="logo">
             <img src="img/logo.png" alt="{{ site.domain }} - {{ site.title }}" width="128">
-            <p><span class="ext">{{ site.title }}</span><span class="dot">·</span><span class="brand">{{
-                    site.title_ext }}</span>
+            <p><span class="ext">{{ site.title }}</span><span class="dot">·</span><span class="brand">{{ site.title_ext }}</span>
         </a></p>
     </h3>
     <p style="text-align: center;">联系方式：
@@ -76,6 +72,21 @@ function art() {
         </li>
         {%- endfor -%}
     </ul>
+    <!-- 汇总框 -->
+    <div id="summary" style="text-align: center; margin-top: 20px;">
+        <p>域名后缀汇总及年续费金额总和将显示在这里</p>
+    </div>
+    <script>
+        function countDomainsAndFees() {
+            // 由于是静态页面，这里使用硬编码的方式模拟域名后缀和费用的汇总
+            // 实际应用中，应该从服务器获取数据或者通过客户端JavaScript解析YAML配置
+            var summaryText = "AO域名总数: 7个, 年续费总金额: $156.45<br>" +
+                              "KE域名总数: 11个, 年续费总金额: $242<br>" +
+                              "TD域名总数: 4个, 年续费总金额: 89.04€<br>" +
+                              "AL域名总数: 1个, 年续费总金额: 10.99€";
+            document.getElementById('summary').innerHTML = summaryText;
+        }
+    </script>
     <footer class="bg-gray-200 flex items-center px-10 py-5 flex justify-between flex-col lg:flex-row mt-16">
         <div class="text-gray-500 text-sm text-center lg:text-left">
             Copyright © 2024 {{ site.domain }}. 长期收单字符. <a class="text-gray-500"
