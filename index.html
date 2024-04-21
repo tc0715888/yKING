@@ -72,6 +72,37 @@ function art() {
                     var remaining = Math.ceil((expiryDate - today) / (1000 * 60 * 60 * 24));
                     document.write('<br>剩余 ' + remaining + ' 天');
                 </script>
+                   <!-- 域名汇总信息 -->
+    <div class="domain-summary">
+        <h3>域名汇总信息</h3>
+        <div id="domain-summary-content">
+            {%- assign extensions = '' -%}
+            {%- assign total_amount = 0 -%}
+            {%- for domain in site.domains -%}
+                {%- capture domain_extension -%}{{ domain.domain | split: '.' | last }}{%- endcapture -%}
+                {%- unless extensions contains domain_extension -%}
+                    {%- assign extensions = extensions | append: domain_extension | append: ',' -%}
+                {%- endunless -%}
+                {%- assign total_amount = total_amount | plus: domain.price -%}
+            {%- endfor -%}
+
+            {%- assign extensions_array = extensions | split: ',' | sort -%}
+            {%- for extension in extensions_array -%}
+                {%- if extension != '' -%}
+                    {%- assign count = 0 -%}
+                    {%- assign extension_total = 0 -%}
+                    {%- for domain in site.domains -%}
+                        {%- if domain.domain contains extension -%}
+                            {%- assign count = count | plus: 1 -%}
+                            {%- assign extension_total = extension_total | plus: domain.price -%}
+                        {%- endif -%}
+                    {%- endfor -%}
+                    <p>{{ extension | upcase }} 域名数量: {{ count }} 个, 总金额: {{ extension_total }} 元</p>
+                {%- endif -%}
+            {%- endfor -%}
+            <p>年续费总金额: <strong>{{ total_amount }}</strong> 元</p>
+        </div>
+    </div>
             </a>
         </li>
         {%- endfor -%}
