@@ -72,7 +72,18 @@ function art() {
                     var remaining = Math.ceil((expiryDate - today) / (1000 * 60 * 60 * 24));
                     document.write('<br>剩余 ' + remaining + ' 天');
                 </script>
-                   <!-- 域名汇总信息 -->
+                 
+            </a>
+        </li>
+        {%- endfor -%}
+    </ul>
+    <footer class="bg-gray-200 flex items-center px-10 py-5 flex justify-between flex-col lg:flex-row mt-16">
+        <div class="text-gray-500 text-sm text-center lg:text-left">
+            Copyright © 2024 {{ site.domain }}. 长期收单字符. <a class="text-gray-500"
+                href="https://github.com/bigtoyscompany/domain-portfolio">年轻的国王</a>
+        </div>
+    </footer>
+      <!-- 域名汇总信息 -->
     <div class="domain-summary">
         <h3>域名汇总信息</h3>
         <div id="domain-summary-content">
@@ -103,16 +114,6 @@ function art() {
             <p>年续费总金额: <strong>{{ total_amount }}</strong> 元</p>
         </div>
     </div>
-            </a>
-        </li>
-        {%- endfor -%}
-    </ul>
-    <footer class="bg-gray-200 flex items-center px-10 py-5 flex justify-between flex-col lg:flex-row mt-16">
-        <div class="text-gray-500 text-sm text-center lg:text-left">
-            Copyright © 2024 {{ site.domain }}. 长期收单字符. <a class="text-gray-500"
-                href="https://github.com/bigtoyscompany/domain-portfolio">年轻的国王</a>
-        </div>
-    </footer>
 </body>
 
 </html>
