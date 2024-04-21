@@ -87,17 +87,20 @@ function art() {
     <div class="domain-summary">
         <h3>域名汇总信息</h3>
         <div id="domain-summary-content">
-            {%- assign extensions = '' -%}
             {%- assign total_amount = 0 -%}
             {%- for domain in site.domains -%}
-                {%- capture domain_extension -%}{{ domain.domain | split: '.' | last }}{%- endcapture -%}
-                {%- unless extensions contains domain_extension -%}
-                    {%- assign extensions = extensions | append: domain_extension | append: ',' -%}
-                {%- endunless -%}
                 {%- assign total_amount = total_amount | plus: domain.price -%}
             {%- endfor -%}
 
-            {%- assign extensions_array = extensions | split: ',' | sort -%}
+            {%- assign domain_extensions = '' -%}
+            {%- for domain in site.domains -%}
+                {%- assign extension = domain.domain | split: '.' | last -%}
+                {%- unless domain_extensions contains extension -%}
+                    {%- assign domain_extensions = domain_extensions | append: extension | append: ',' -%}
+                {%- endunless -%}
+            {%- endfor -%}
+
+            {%- assign extensions_array = domain_extensions | split: ',' | sort_natural -%}
             {%- for extension in extensions_array -%}
                 {%- if extension != '' -%}
                     {%- assign count = 0 -%}
@@ -111,7 +114,7 @@ function art() {
                     <p>{{ extension | upcase }} 域名数量: {{ count }} 个, 总金额: {{ extension_total }} 元</p>
                 {%- endif -%}
             {%- endfor -%}
-            <p>年续费总金额: <strong>{{ total_amount }}</strong> 元</p>
+            <p>年续费总金额: <strong>{{ total_amount }}</strong> 欧/美元</p>
         </div>
     </div>
 </body>
