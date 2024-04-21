@@ -14,84 +14,85 @@ contacts:
 domains:
   - domain: AGI.AO
     description: "@Give me five✋♣angoweb. $22.35♣"
-    price: 22.35
+    price: 22.35  概念: 通用大模型/AI的最终归属！
     registration_date: "2024-04-17"
   - domain: SOS.AO
     description: "@Give me five✋♣angoweb. $22.35♣"
-    price: 22.35
+    price: 22.35  概念: 求救、求助！
     registration_date: "2024-04-16"
   - domain: SOSO.AO
     description: "@Give me five✋♣angoweb. $22.35♣"
-    price: 22.35
+    price: 22.35  概念: 搜搜、适合搭建引擎网站！
     registration_date: "2024-04-16"
   - domain: UFO.AO
     description: "@Give me five✋♣angoweb. $22.35♣"
-    price: 22.35
+    price: 22.35  概念: 未知、外星人概念！
     registration_date: "2024-04-17"
   - domain: VPN.AO
     description: "@Give me five✋♣angoweb. $22.35♣"
-    price: 22.35
+    price: 22.35  概念: 科学上网你懂的！
     registration_date: "2024-04-15"
   - domain: WPS.AO
     description: "@Give me five✋♣angoweb. $22.35♣"
-    price: 22.35
+    price: 22.35  概念: 文字处理系统/适合文字处理工具的集成网站！
     registration_date: "2024-04-15"
   - domain: ISO.AO
     description: "@Give me five✋♣angoweb. $22.35♣"
-    price: 22.35
+    price: 22.35 概念: 行业标准！
     registration_date: "2024-04-17"
   - domain: 4.KE
     description: "@Give me five✋♣kenyawebexperts. $22♣"
-    price: 22
+    price: 22 概念: 4K分辨率!
     registration_date: "2024-02-15"
   - domain: 98.KE
     description: "@Give me five✋♣kenyawebexperts. $22♣"
-    price: 22
+    price: 22 概念: 吃鸡都知道!
     registration_date: "2024-04-18"
   - domain: AGI.KE
     description: "@Give me five✋♣kenyawebexperts. $22♣"
-    price: 22
+    price: 22 概念: 通用大模型/AI的最终归属！
     registration_date: "2024-04-18"
   - domain: GPT.KE
     description: "@Give me five✋♣kenyawebexperts. $22♣"
-    price: 22
+    price: 22 概念: 最火的AI模型没有之一！
     registration_date: "2024-04-16"
   - domain: KB.KE
     description: "@Give me five✋♣kenyawebexperts. $22♣"
-    price: 22
+    price: 22 概念: “科比”！
     registration_date: "2024-04-17"
   - domain: KD.KE
     description: "@Give me five✋♣kenyawebexperts. $22♣"
-    price: 22
+    price: 22 概念: 杜兰特/也是AB.AC的小递增!
     registration_date: "2024-04-17"
   - domain: KEE.KE
     description: "@Give me five✋♣kenyawebexperts. $22♣"
+    price: 22 概念: 完美ABB.AB!!
     registration_date: "2024-04-17"
   - domain: KEY.KE
     description: "@Give me five✋♣kenyawebexperts. $22♣"
-    price: 22
+    price: 22 概念: 钥匙/密钥 适合中转网站搭建！
     registration_date: "2024-04-16"
   - domain: KKK.KE
     description: "@Give me five✋♣kenyawebexperts. $22♣"
-    price: 22
+    price: 22 概念: AAA.AB的概念顺口溜！
     registration_date: "2024-04-16"
   - domain: 9.SRL
     description: "@Give me five✋♣porkbun. $28.89♣"
-    price: 22.89
+    price: 22.89 概念: 共享资源概念，简称就共享！
     registration_date: "2022-04-21"
-  - domain: Q.TD
+  - domain: Q.TD 
     description: "@Give me five✋♣afriregister. 22.26€♣"
-    price: 22.26
+    price: 22.26 概念: TD技术部门,有问题Q.TD！
     registration_date: "2022-09-03"
   - domain: DT.TD
     description: "@Give me five✋♣afriregister. 22.26€♣"
-    price: 22.26
+    price: 22.26 概念: 完美的镜像米！
     registration_date: "2022-07-03"
   - domain: GPT.TD
     description: "@Give me five✋♣afriregister. 22.26€♣"
-    price: 22.26
+    price: 22.26 概念: 最火的AI模型没有之一!
     registration_date: "2023-04-10"
   - domain: NB.AL
     description: "@Give me five✋♣innovahost. 10.99€♣"
-    price: 10.99
+    price: 10.99 概念: 牛逼的网站!
     registration_date: "2024-04-08"
