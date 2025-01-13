@@ -1,416 +1,240 @@
 @import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400;1,700&amp;family=Quicksand:wght@400;500;600;700&amp;display=swap");
 
+/* 重置基础样式 */
 body,form,h1,h2,h3,h4,h5,ol,p,ul {
 	margin: 0;
-    color:#fff;
-    padding: .2em 0.5em;
+	color: #fff;
+	padding: 0;
 }
+
 * {
-    box-sizing: border-box;
+	box-sizing: border-box;
 }
 
-ol,ul {
-	padding: 0
-}
+/* 优化主体样式 */
 body {
-    margin: 0;
-    padding: 0;
-    /*background: #131417;*/
-    background: #557fcc;
-    font-family: "Quicksand", Verdana, Tahoma, STHeiti, "Noto Sans CJK SC", "Microsoft YaHei", SimHei, sans-serif;
+	margin: 0;
+	padding: 20px;
+	background: #557fcc;
+	font-family: "Quicksand", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+	min-height: 100vh;
 }
 
-h3 {
-    margin-top: 1.5vw;
-    text-align: center;
-    color: #ffffff;
+/* 标题样式优化 */
+.page-head {
+	text-align: center;
+	margin-bottom: 30px;
+	padding: 20px 0;
 }
 
-h3 a {
-    color: #fff;
-    text-decoration: none;
-}
-a {
-    text-decoration: none;
-    color: #ffffff
-}
-ul {
-    padding: 1vw;
-    margin-top: 0vw;
-    list-style: none;
+/* 域名卡片网格布局优化 */
+#followers-list {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+	gap: 20px;
+	padding: 20px;
+	margin: 0 auto;
+	max-width: 1600px;
+	list-style: none;
 }
 
-li {
-    display: inline-block;
-    width: 17.25vw;
-    background: #1e1f26;
-    margin: 1vw;
-    border-radius: 6px;
-    color: #e6e6e6;
-    overflow: hidden;
-    position: relative;
-    box-sizing: border-box;
+/* 域名卡片样式优化 */
+#followers-list li {
+	background: rgba(30, 31, 38, 0.95);
+	border-radius: 12px;
+	transition: transform 0.2s, box-shadow 0.2s;
+	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
-li a {
-    float: left;
-    padding: 0.5em;
-    text-decoration: none;
-    color: #fff;
-    width: 100%;
-    box-sizing: border-box;
-    transition: all 0.4s ease 0s;
+/* 卡片内容布局优化 */
+#followers-list li a {
+	padding: 20px;
+	display: flex;
+	flex-direction: column;
+	gap: 12px;
+	text-decoration: none;
+	color: #fff;
 }
 
-li a:hover {
-    background: #444857;
-    transition: all 0.4s ease 0s;
+/* 域名图标样式 */
+#followers-list li a img {
+	width: 48px;
+	height: 48px;
+	border-radius: 10px;
+	margin-bottom: 8px;
 }
 
-li a:hover span {
-    color: #fff;
-    transition: all 0.4s ease 0s;
+/* 域名标题和描述布局 */
+.domain-info {
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
 }
 
-li a img {
-    width: 2.5em;
-    height: 2.5em;
-    float: left;
-    margin-right: 0.5em;
-    border-radius: 3px;
+/* WHOIS和管理按钮容器 */
+.domain-actions {
+	display: flex;
+	gap: 10px;
+	margin-top: 12px;
 }
 
-li a:hover img {
-    opacity: 0.85;
-    transition: all 0.4s ease 0s;
+/* 按钮样式统一 */
+.domain-actions a {
+	display: inline-flex;
+	align-items: center;
+	padding: 8px 16px;
+	background: rgba(255, 255, 255, 0.1);
+	border-radius: 8px;
+	color: #fff;
+	font-size: 0.9em;
+	transition: all 0.2s;
 }
 
-li a strong {
-    float: left;
-    width: calc(100% - 3em);
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    font-size: 1.125em;
-    line-height: 1.4em;
+.domain-actions a:hover {
+	background: rgba(255, 255, 255, 0.2);
+	transform: translateY(-1px);
 }
 
-li a span {
-    float: left;
-    width: calc(100% - 4em);
-    color: #76daff;
-    font-size: 0.75em;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
+/* 过期日期显示优化 */
+.expiry-date {
+	margin-top: 12px;
+	padding: 10px;
+	border-radius: 8px;
+	background: rgba(0, 0, 0, 0.2);
+	font-size: 0.9em;
+	color: #76daff;
 }
 
-
-@media (max-width:979px) {
-    li {
-        width: 31%;
-    }
+/* 警告状态样式 */
+.expiry-warning {
+	color: #ff6b6b;
+	font-weight: 500;
 }
 
-@media (max-width:767px) {
-    li {
-        width: 47%;
-    }
+/* 响应式优化 */
+@media (max-width: 1400px) {
+	#followers-list {
+		grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+	}
 }
 
-@media (max-width:480px) {
-    li {
-        width: 98%;
-    }
+@media (max-width: 768px) {
+	body {
+		padding: 10px;
+	}
+	
+	#followers-list {
+		padding: 10px;
+		gap: 15px;
+	}
+	
+	#followers-list li a {
+		padding: 15px;
+	}
 }
 
-@media (max-width:360px) {
-    h3 {
-        margin-top: 2.5vw;
-        margin-bottom: 1.5vw;
-    }
-
-    li {
-        width: 98%;
-    }
-
-    li a {
-        display: inline-block;
-        float: none;
-    }
-}
+/* Logo样式优化 */
 .logo {
-	position:relative;
-	text-decoration:none;
-	font-weight:normal;
-	font-family:"Quicksand",arial;
-	font-size:36px;
+	display: inline-block;
+	text-decoration: none;
+	font-family: "Quicksand", arial;
+	font-size: 36px;
 }
+
 .logo .brand {
-	font-weight:700;
-	color:#ffab00;
-	/*color:#c71919;*/
+	font-weight: 700;
+	color: #ffab00;
 }
+
 .logo .ext {
-    color:#f9cb6e;
-	/*color:rgb(255, 255, 255);*/
+	color: #f9cb6e;
 }
+
 .logo .dot {
-	font-family:"Quicksand","sans-serif";
-	font-size:42px;
-	/* color:#ffdb0c; */
-	/*color:#707070;*/
-}
-.logo .title {
-	position:absolute;
-	left:0;
-	top:90%;
-	right:0;
-	text-align-last:justify;
-	color:rgb(255, 255, 255);
-	font-size:12px;
-}
-.footer {
-	color:#808080;
-	font-size: 13px;
-	padding: 0px 0 20px 0px;
-}
-.px-10 {
-    padding-left: 2.5rem;
-    padding-right: 2.5rem;
-}
-.py-5 {
-    padding-top: 1.25rem;
-    padding-bottom: 1.25rem;
-}
-.justify-between {
-    justify-content: space-between;
-}
-.items-center {
-    align-items: center;
-}
-.flex-col {
-    flex-direction: column;
-}
-.flex {
-    display: flex;
+	font-family: "Quicksand", "sans-serif";
+	font-size: 42px;
+	color: #ffdb0c;
 }
 
-@media (min-width: 1024px)
-.lg\:flex-row {
-    flex-direction: row;
-}
-.text-gray-500 {
-    --text-opacity: 1;
-    color: #a0aec0;
-    color: rgba(160, 174, 192, var(--text-opacity));
-}
-@media (min-width: 1024px)
-.lg\:text-left {
-    text-align: left;
-}
-.text-center {
-    text-align: center;
-}
-.text-sm {
-    font-size: 0.875rem;
+/* 页面标题样式 */
+h3 {
+	margin: 30px 0;
+	text-align: center;
+	color: #ffffff;
+	font-size: 1.5em;
 }
 
-
-
-/*--lanterns--*/
-.deng-box {
-    position: fixed;
-    top: -30px;
-    left: 220px;
-    z-index: 9999;
-    pointer-events: none;
-}
- 
-.deng-box1 {
-    position: fixed;
-    top: -30px;
-    right: 222px;
-    z-index: 9999;
-    pointer-events: none;
+/* 联系方式样式优化 */
+.contact-info {
+	text-align: center;
+	margin-bottom: 30px;
+	padding: 10px;
+	background: rgba(0, 0, 0, 0.1);
+	border-radius: 8px;
 }
 
-.deng-box1 .deng {
-    position: relative;
-    width: 120px;
-    height: 90px;
-    margin: 50px;
-    background: #d8000f;
-    background: rgba(216, 0, 15, 0.8);
-    border-radius: 50% 50%;
-    -webkit-transform-origin: 50% -100px;
-    -webkit-animation: swing 5s infinite ease-in-out;
-    box-shadow: -5px 5px 30px 4px rgba(252, 144, 61, 1);
+.contact-info a {
+	display: inline-flex;
+	align-items: center;
+	padding: 5px 10px;
+	color: #fff;
+	text-decoration: none;
+	transition: opacity 0.2s;
 }
 
-.deng {
-    position: relative;
-    width: 120px;
-    height: 90px;
-    margin: 50px;
-    background: #d8000f;
-    background: rgba(216, 0, 15, 0.8);
-    border-radius: 50% 50%;
-    -webkit-transform-origin: 50% -100px;
-    -webkit-animation: swing 3s infinite ease-in-out;
-    box-shadow: -5px 5px 50px 4px rgba(250, 108, 0, 1);
+.contact-info a:hover {
+	opacity: 0.8;
 }
 
-.deng-a {
-    width: 100px;
-    height: 90px;
-    background: #d8000f;
-    background: rgba(216, 0, 15, 0.1);
-    margin: 12px 8px 8px 10px;
-    border-radius: 50% 50%;
-    border: 2px solid #dc8f03;
+.contact-info i {
+	margin-right: 5px;
 }
 
-.deng-b {
-    width: 45px;
-    height: 90px;
-    background: #d8000f;
-    background: rgba(216, 0, 15, 0.1);
-    margin: -2px 8px 8px 26px;
-    border-radius: 50% 50%;
-    border: 2px solid #dc8f03;
+/* 域名汇总信息样式 */
+.domain-summary {
+	background: rgba(0, 0, 0, 0.1);
+	border-radius: 12px;
+	padding: 20px;
+	margin-top: 30px;
 }
 
-.xian {
-    position: absolute;
-    top: -20px;
-    left: 60px;
-    width: 2px;
-    height: 20px;
-    background: #dc8f03;
+.domain-summary li {
+	margin-bottom: 15px;
 }
 
-.shui-a {
-    position: relative;
-    width: 5px;
-    height: 20px;
-    margin: -5px 0 0 59px;
-    -webkit-animation: swing 4s infinite ease-in-out;
-    -webkit-transform-origin: 50% -45px;
-    background: #ffa500;
-    border-radius: 0 0 5px 5px;
+.domain-summary li:last-child {
+	margin-bottom: 0;
+	border-top: 1px solid rgba(255, 255, 255, 0.1);
+	padding-top: 15px;
 }
 
-.shui-b {
-    position: absolute;
-    top: 14px;
-    left: -2px;
-    width: 10px;
-    height: 10px;
-    background: #dc8f03;
-    border-radius: 50%;
+/* 页脚样式优化 */
+footer {
+	margin-top: 40px;
+	padding: 20px;
+	text-align: center;
+	background: rgba(0, 0, 0, 0.1);
+	border-radius: 8px;
 }
 
-.shui-c {
-    position: absolute;
-    top: 18px;
-    left: -2px;
-    width: 10px;
-    height: 35px;
-    background: #ffa500;
-    border-radius: 0 0 0 5px;
+footer a {
+	color: #76daff;
+	text-decoration: none;
+	transition: opacity 0.2s;
 }
 
-.deng:before {
-    position: absolute;
-    top: -7px;
-    left: 29px;
-    height: 12px;
-    width: 60px;
-    content: " ";
-    display: block;
-    z-index: 999;
-    border-radius: 5px 5px 0 0;
-    border: solid 1px #dc8f03;
-    background: #ffa500;
-    background: linear-gradient(to right, #dc8f03, #ffa500, #dc8f03, #ffa500, #dc8f03);
+footer a:hover {
+	opacity: 0.8;
 }
 
-.deng:after {
-    position: absolute;
-    bottom: -7px;
-    left: 10px;
-    height: 12px;
-    width: 60px;
-    content: " ";
-    display: block;
-    margin-left: 20px;
-    border-radius: 0 0 5px 5px;
-    border: solid 1px #dc8f03;
-    background: #ffa500;
-    background: linear-gradient(to right, #dc8f03, #ffa500, #dc8f03, #ffa500, #dc8f03);
+/* 强调文本样式 */
+.price {
+	color: #ffab00;
+	font-weight: 500;
 }
 
-.deng-t {
-    font-family: cf;
-    font-size: 2.3rem;
-    color: #ffa500;
-    /* font-weight: bold; */
-    line-height: 30px;
-    text-align: center;
-    /* width: 25px; */
-    margin: 0 auto;
-    margin-top: 10px;
-}
-
-.night .deng-t, 
-.night .deng-box, 
-.night .deng-box1 {
-    background: transparent !important;
-}
-
-@-moz-keyframes swing {
-    0% {
-        -moz-transform: rotate(-10deg)
-    }
-
-    50% {
-        -moz-transform: rotate(10deg)
-    }
- 
-    100% {
-        -moz-transform: rotate(-10deg)
-    }
-}
-
-@-webkit-keyframes swing {
-    0% {
-        -webkit-transform: rotate(-10deg)
-    }
-
-    50% {
-        -webkit-transform: rotate(10deg)
-    }
-
-    100% {
-        -webkit-transform: rotate(-10deg)
-    }
-}
-
-.whois-check {
-    margin-left: 10px;
-    font-size: 0.9em;
-}
-
-.whois-check a {
-    color: #0066cc;
-    text-decoration: none;
-}
-
-.whois-check a:hover {
-    text-decoration: underline;
-}
-
-.whois-check i {
-    margin-right: 3px;
+/* 卡片悬停效果 */
+#followers-list li:hover {
+	transform: translateY(-2px);
+	box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
