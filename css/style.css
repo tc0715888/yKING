@@ -396,3 +396,21 @@ li a span {
         -webkit-transform: rotate(-10deg)
     }
 }
+
+.whois-check {
+    margin-left: 10px;
+    font-size: 0.9em;
+}
+
+.whois-check a {
+    color: #0066cc;
+    text-decoration: none;
+}
+
+.whois-check a:hover {
+    text-decoration: underline;
+}
+
+.whois-check i {
+    margin-right: 3px;
+}
