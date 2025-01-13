@@ -155,10 +155,25 @@ function art() {
                 {%- endfor -%}
                 <li>
                     <a href="javascript:void(0)">
-                        <!-- 使用随机背景颜色的 Avatar 作为图标 -->
                         <img src="https://eu.ui-avatars.com/api/?background=random&amp;name={{ extension | slice: 0 }}&amp;font-size=0.6">
                         <strong>{{ extension | upcase }}</strong>
                         <span>域名数量: {{ count }} 个, 总金额: {{ extension_total }} 欧/美元</span>
+                        <br>
+                        <span style="font-size: 0.9em;">
+                        管理链接: 
+                        {%- case extension -%}
+                            {%- when 'KE' -%}
+                                <a href="https://kenyawebexperts.co.ke/clientarea.php?action=domains" target="_blank">Kenya Web Experts</a>
+                            {%- when 'TD' -%}
+                                <a href="https://www.afriregister.com/domainmanager.php#" target="_blank">Afriregister</a>
+                            {%- when 'SRL' -%}
+                                <a href="https://porkbun.com/account/domainsSpeedy" target="_blank">Porkbun</a>
+                            {%- when 'AL' -%}
+                                <a href="https://my.innovahost.net/clientarea.php?action=domains" target="_blank">Innovahost</a>
+                            {%- when 'AO' -%}
+                                <a href="https://angoweb.ao/index.php/user/accounts" target="_blank">Angoweb</a>
+                        {%- endcase -%}
+                        </span>
                     </a>
                 </li>
             {%- endif -%}
