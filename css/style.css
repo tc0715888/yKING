@@ -44,11 +44,11 @@ body {
 	border-radius: 12px;
 	transition: transform 0.2s, box-shadow 0.2s;
 	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+	padding: 15px;
 }
 
 /* 卡片内容布局优化 */
 #followers-list li a {
-	padding: 20px;
 	display: flex;
 	flex-direction: column;
 	gap: 12px;
@@ -107,7 +107,7 @@ body {
 
 /* 警告状态样式 */
 .expiry-warning {
-	color: #ff6b6b;
+	color: #ff6b6b !important;
 	font-weight: 500;
 }
 
