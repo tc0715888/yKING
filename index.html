@@ -76,61 +76,32 @@ function art() {
     </p>
     <ul id="followers-list">
         {%- for domain in site.domains -%}
-        <li>
-            <a href="javascript:void(0)"><img
-                    src="https://eu.ui-avatars.com/api/?background=random&amp;name={{ domain.domain | slice: 0 }}&amp;font-size=0.6"><strong>{{
-                    domain.domain }}</strong>
-                    <span>
-                        {{domain.description}}
-                        {%- if domain.price -%}
-                            <br>价格: {{domain.price}} 欧/美元
-                        {%- endif -%}
+        <li class="domain-card">
+            <a href="javascript:void(0)">
+                <img src="https://eu.ui-avatars.com/api/?background=random&amp;name={{ domain.domain | slice: 0 }}&amp;font-size=0.6" alt="{{ domain.domain }}">
+                <div class="domain-info">
+                    <strong>{{ domain.domain }}</strong>
+                    <span>{{ domain.description }}</span>
+                    {% if domain.price %}
+                    <span class="price">价格: {{ domain.price }} 欧/美元</span>
+                    {% endif %}
+                </div>
+                <div class="domain-actions">
+                    <span class="whois-check">
+                        [<a href="{{ site.whois_provider }}{{ domain.domain }}" 
+                        target="_blank" title="查看 WHOIS 信息">
+                        <i class="fa fa-search"></i> WHOIS查询</a>]
                     </span>
-                {%- assign tld = domain.domain | split: '.' | last | upcase -%}
-                <span class="whois-check">
-                    [<a href="{{ site.whois_provider }}{{ domain.domain }}" 
-                    target="_blank" title="查看 WHOIS 信息">
-                    <i class="fa fa-search"></i> WHOIS查询</a>]
                     {% if site.domain_managers[tld] %}
                     [<a href="{{ site.domain_managers[tld].url }}" 
                     target="_blank" title="域名管理">
                     <i class="fa fa-cog"></i> 管理</a>]
                     {% endif %}
-                </span>
-                 <script>
-
-                    var registrationDateString = '{{ domain.registration_date }}';
-                    var registrationDate = new Date(registrationDateString);
-                    var today = new Date();
-                    today.setHours(0, 0, 0, 0);
-
-                    // 计算下一个续费日期
-                    var nextRenewalDate = new Date(registrationDate);
-                    nextRenewalDate.setFullYear(today.getFullYear());
-                    
-                    // 如果今年的续费日期已经过了，就计算明年的续费日期
-                    if (nextRenewalDate < today) {
-                        nextRenewalDate.setFullYear(today.getFullYear() + 1);
-                    }
-
-                    // 计算剩余天数
-                    var timeDiff = nextRenewalDate.getTime() - today.getTime();
-                    var remaining = Math.ceil(timeDiff / (1000 * 60 * 60 * 24));
-
-                    // 格式化续费日期
-                    var renewalDateStr = nextRenewalDate.getFullYear() + '-' + 
-                                        String(nextRenewalDate.getMonth() + 1).padStart(2, '0') + '-' + 
-                                        String(nextRenewalDate.getDate()).padStart(2, '0');
-
-                    // 根据剩余天数决定显示样式
-                    var warningStyle = remaining <= 30 ? 'color: red; font-weight: bold;' : '';
-                    var warningText = remaining <= 30 ? '⚠️ ' : '';
-
-                    document.write('<br><span style="' + warningStyle + '">' + 
-                                  warningText + '续费日期: ' + renewalDateStr + 
-                                  ' (剩余 ' + remaining + ' 天)</span>');
-                </script>
-                 
+                </div>
+                <div class="expiry-date {% if remaining <= 30 %}expiry-warning{% endif %}">
+                    {{ warningText }}续费日期: {{ renewalDateStr }}
+                    (剩余 {{ remaining }} 天)
+                </div>
             </a>
         </li>
         {%- endfor -%}
@@ -196,3 +167,4 @@ function art() {
 </body>
 
 </html>
+
