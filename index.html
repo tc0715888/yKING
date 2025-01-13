@@ -89,12 +89,17 @@ function art() {
                     var today = new Date();
                     today.setHours(0, 0, 0, 0);
 
-                    var nextYear = today.getFullYear() + 1;
-                    var registrationMonthDay = registrationDateString.slice(-5); // 获取月份和日子
-                    var expiryDateString = `${nextYear}-${registrationMonthDay}`;
-                    var expiryDate = new Date(expiryDateString);
+                    // 计算下一个续费日期
+                    var nextRenewalDate = new Date(registrationDate);
+                    nextRenewalDate.setFullYear(today.getFullYear());
+                    
+                    // 如果今年的续费日期已经过了，就计算明年的续费日期
+                    if (nextRenewalDate < today) {
+                        nextRenewalDate.setFullYear(today.getFullYear() + 1);
+                    }
 
-                    var timeDiff = expiryDate.getTime() - today.getTime();
+                    // 计算剩余天数
+                    var timeDiff = nextRenewalDate.getTime() - today.getTime();
                     var remaining = Math.ceil(timeDiff / (1000 * 60 * 60 * 24));
 
                     document.write('<br>剩余 ' + remaining + ' 天');
@@ -159,3 +164,4 @@ function art() {
 </body>
 
 </html>
+
