@@ -109,7 +109,7 @@ domains:
   - domain: NB.AL
     description: "概念: 牛逼的网站!"
     price: 10.99 
-    registration_date: "2025-02-28"
+    registration_date: "2024-04-08"
 
 # GitHub Pages 配置
 baseurl: ""  # 使用自定义域名时留空
@@ -127,3 +127,25 @@ featured_domains:  # 特色域名展示
 # 联系按钮设置
 contact_button_text: "咨询价格"
 contact_button_color: "#007bff"
+
+# WHOIS 查询配置
+whois_provider: "https://who.cx/"
+
+# 域名管理配置
+domain_managers:
+  KE: 
+    name: "Kenya Web Experts"
+    url: "https://kenyawebexperts.co.ke/clientarea.php?action=domains"
+  TD:
+    name: "Afriregister"
+    url: "https://www.afriregister.com/domainmanager.php#"
+  SRL:
+    name: "Porkbun"
+    url: "https://porkbun.com/account/domainsSpeedy"
+  AL:
+    name: "Innovahost"
+    url: "https://my.innovahost.net/clientarea.php?action=domains"
+  AO:
+    name: "Angoweb"
+    url: "https://angoweb.ao/index.php/user/accounts"
+
