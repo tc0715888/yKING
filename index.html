@@ -79,9 +79,24 @@ function art() {
         <li>
             <a href="javascript:void(0)"><img
                     src="https://eu.ui-avatars.com/api/?background=random&amp;name={{ domain.domain | slice: 0 }}&amp;font-size=0.6"><strong>{{
-                    domain.domain }}</strong><span>{{domain.description}}{%- if domain.price -%}［{{domain.price}}］{%-
-                    endif
-                    -%}</span>
+                    domain.domain }}</strong>
+                    <span>
+                        {{domain.description}}
+                        {%- if domain.price -%}
+                            <br>价格: {{domain.price}} 欧/美元
+                        {%- endif -%}
+                    </span>
+                {%- assign tld = domain.domain | split: '.' | last | upcase -%}
+                <span class="whois-check">
+                    [<a href="{{ site.whois_provider }}{{ domain.domain }}" 
+                    target="_blank" title="查看 WHOIS 信息">
+                    <i class="fa fa-search"></i> WHOIS查询</a>]
+                    {% if site.domain_managers[tld] %}
+                    [<a href="{{ site.domain_managers[tld].url }}" 
+                    target="_blank" title="域名管理">
+                    <i class="fa fa-cog"></i> 管理</a>]
+                    {% endif %}
+                </span>
                  <script>
 
                     var registrationDateString = '{{ domain.registration_date }}';
@@ -157,22 +172,13 @@ function art() {
                     <a href="javascript:void(0)">
                         <img src="https://eu.ui-avatars.com/api/?background=random&amp;name={{ extension | slice: 0 }}&amp;font-size=0.6">
                         <strong>{{ extension | upcase }}</strong>
-                        <span>域名数量: {{ count }} 个, 总金额: {{ extension_total }} 欧/美元</span>
-                        <br>
-                        <span style="font-size: 0.9em;">
-                        管理链接: 
-                        {%- case extension -%}
-                            {%- when 'KE' -%}
-                                <a href="https://kenyawebexperts.co.ke/clientarea.php?action=domains" target="_blank">Kenya Web Experts</a>
-                            {%- when 'TD' -%}
-                                <a href="https://www.afriregister.com/domainmanager.php#" target="_blank">Afriregister</a>
-                            {%- when 'SRL' -%}
-                                <a href="https://porkbun.com/account/domainsSpeedy" target="_blank">Porkbun</a>
-                            {%- when 'AL' -%}
-                                <a href="https://my.innovahost.net/clientarea.php?action=domains" target="_blank">Innovahost</a>
-                            {%- when 'AO' -%}
-                                <a href="https://angoweb.ao/index.php/user/accounts" target="_blank">Angoweb</a>
-                        {%- endcase -%}
+                        <span>
+                            域名数量: {{ count }} 个
+                            <br>总金额: {{ extension_total }} 欧/美元
+                            {% if site.domain_managers[extension] %}
+                            <br>注册商: <a href="{{ site.domain_managers[extension].url }}" 
+                                       target="_blank">{{ site.domain_managers[extension].name }}</a>
+                            {% endif %}
                         </span>
                     </a>
                 </li>
@@ -190,5 +196,3 @@ function art() {
 </body>
 
 </html>
-
-
