@@ -1,16 +1,30 @@
+# 网站基本信息
 domain: Q.TD
 title: Young
 title_ext: King
+description: "域名交易与展示平台"  # 添加网站描述
 
+# SEO 优化
+keywords: "域名交易,域名投资,短域名"  # 添加关键词
+author: Young King  # 添加作者信息
+
+# 联系方式
 contacts:
-  - icon: "fa fa-envelope"
-    # url: "8327811@qq.com"
-    # text: 8327811@qq.com
   - icon: "fa fa-qq"
     text: 18677798881
+    url: "tencent://message/?uin=18677798881"  # 添加QQ链接
+  - icon: "fa fa-envelope"
+    text: "8327811@qq.com"
+    url: "mailto:8327811@qq.com"
   # - icon: "fa fa-wechat"
   #   text: wechat-username
-  
+
+# 网站设置
+show_price: true  # 是否显示价格
+enable_contact: true  # 是否启用联系功能
+date_format: "YYYY-MM-DD"  # 日期格式
+
+# 域名列表保持不变
 domains:
   - domain: AGI.AO
     description: "概念: 通用大模型/AI的最终归属！"
@@ -96,3 +110,20 @@ domains:
     description: "概念: 牛逼的网站!"
     price: 10.99 
     registration_date: "2024-04-08"
+
+# GitHub Pages 配置
+baseurl: ""  # 使用自定义域名时留空
+url: "https://q.td"  # 改为你的自定义域名
+
+# 展示设置
+sort_by: "registration_date"  # 可选值: registration_date, price, domain
+sort_order: "desc"  # 可选值: desc, asc
+group_by_tld: true  # 是否按顶级域名分组
+featured_domains:  # 特色域名展示
+  - AGI.AO
+  - GPT.KE
+  - Q.TD
+
+# 联系按钮设置
+contact_button_text: "咨询价格"
+contact_button_color: "#007bff"
