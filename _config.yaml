@@ -109,7 +109,7 @@ domains:
   - domain: NB.AL
     description: "概念: 牛逼的网站!"
     price: 10.99 
-    registration_date: "2024-04-08"
+    registration_date: "2025-02-28"
 
 # GitHub Pages 配置
 baseurl: ""  # 使用自定义域名时留空
